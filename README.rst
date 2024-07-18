@@ -31,5 +31,7 @@ The following boards are supported in this repo with interfaces provided in the 
 +--------------------+---------------------+
 |XK_AUDIO_216_MC_AB  | XC                  |
 +--------------------+---------------------+
+|XK_VOICE_SQ66       | C                   |
++--------------------+---------------------+
 
 
