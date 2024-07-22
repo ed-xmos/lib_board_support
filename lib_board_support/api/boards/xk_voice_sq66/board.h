@@ -6,6 +6,11 @@
 #define __XK_VOICE_SQ66_BOARD_H__
 
 #include <xccompat.h>
+#include "i2c.h"
+
+/// Start an i2s master thread which uses the DAC pins
+#define xk_voice_sq66_i2c_master(i2c) i2c_master((i2c), 1, p_scl, p_sda, 100)
+
 
 typedef struct {
 
@@ -15,10 +20,9 @@ typedef struct {
 
 
 //// XUA hw setup convenience APIs
-
 void xk_voice_sq66_AudioHwRemote(chanend c);
-void xk_voice_sq66_AudioHwInit(const xk_voice_sq66_config_t& config);
-void xk_voice_sq66_AudioHwConfig(unsigned samFreq, unsigned mClk, unsigned dsdMode,
+void xk_voice_sq66_AudioHwInit(client interface i2c_master_if i2c, const xk_voice_sq66_config_t& config);
+void xk_voice_sq66_AudioHwConfig(client interface i2c_master_if i2c, unsigned samFreq, unsigned mClk, unsigned dsdMode,
     unsigned sampRes_DAC, unsigned sampRes_ADC);
 
 #endif // __XK_VOICE_SQ66_BOARD_H__
